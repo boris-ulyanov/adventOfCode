@@ -58,7 +58,7 @@ print 'Replaces', replaces
 
 tmp = [0 for x in xrange(progs_size)]
 
-for x in xrange(1000000):
+for x in xrange(1000000000):
 
     for i in xrange(progs_size):
         tmp[i] = progs[shuffles[i]]
