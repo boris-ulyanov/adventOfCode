@@ -44,10 +44,15 @@ for cmd in commands:
 
 commands = None
 
-progs = [ chr(x + ASCII_A) for x in xrange(progs_size)]
+for i in xrange(progs_size):
+    replaces[i] = ord(replaces[i]) - ASCII_A
+
+# progs = [ chr(x + ASCII_A) for x in xrange(progs_size)]
+progs = [x for x in xrange(progs_size)]
 
 print 'Start:',
-print 'Progs', ''.join(progs)
+# print 'Progs', ''.join(progs)
+print 'Progs', progs
 print 'Shuffles', shuffles
 print 'Replaces', replaces
 
@@ -59,9 +64,11 @@ for x in xrange(1000000):
         tmp[i] = progs[shuffles[i]]
 
     for i in xrange(progs_size):
-        idx = ord(tmp[i]) - ASCII_A
-        progs[i] = replaces[idx]
+        progs[i] = replaces[tmp[i]]
 
+
+for i in xrange(progs_size):
+    progs[i] = chr(progs[i] + ASCII_A)
 
 print 'Finish'
 print ''.join(progs)
